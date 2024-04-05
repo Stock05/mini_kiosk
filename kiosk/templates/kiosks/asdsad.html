@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>음료 메뉴</title>
+</head>
+<body>
+    <h1>음료 메뉴</h1>
+    <ul>
+        {% for question in question_list %}
+            <li>{{ question.drinks_type }}</li>
+            <ul>
+                {% for choice in question.choice_set.all %}
+                    <li>{{ choice.drink_name }} - 가격: {{ choice.price }}원</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
