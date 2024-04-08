@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Choice, Question
+from django.shortcuts import render, redirect
+from .models import Choice, Question, OrderItem
 from django.views.generic import ListView
 
 
@@ -9,3 +9,8 @@ class IndexView(ListView):
     template_name = "kiosks/index.html"    
 
   
+class OrderView(ListView):
+    model = Question
+    template_name = "kiosks/order.html"    
+
+

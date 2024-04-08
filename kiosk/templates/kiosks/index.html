@@ -5,7 +5,8 @@
 </head>
 <body>
     <h1>음료 메뉴</h1>
-    <form method="post">
+    <form method="post" action="{% url 'kiosk:order' %}">
+        {% csrf_token %}
         <ul>
             {% for question in question_list %}
                 <div class="menu-item">
@@ -20,7 +21,7 @@
                 </div>
             {% endfor %}
         </ul>
-        <button type="submit">주문하기</button>
+        <a href="{% url 'kiosk:order' %}">주문 페이지로 이동</a>
     </form>
 </body>
 </html>

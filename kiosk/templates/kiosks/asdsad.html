@@ -5,15 +5,24 @@
 </head>
 <body>
     <h1>음료 메뉴</h1>
-    <ul>
-        {% for question in question_list %}
-            <li>{{ question.drinks_type }}</li>
-            <ul>
-                {% for choice in question.choice_set.all %}
-                    <li>{{ choice.drink_name }} - 가격: {{ choice.price }}원</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </ul>
+    <form method="post">
+        <ul>
+            {% for question in question_list %}
+                <div class="menu-item">
+                    <li>{{ question.drinks_type }}</li>
+                    <ul>
+                        {% for choice in question.choice_set.all %}
+                            <li>{{ choice.drink_name }} - 가격: {{ choice.price }}원
+                                <input type="number" name="quantity_{{ choice.id }}" value="0" min="0">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'kiosk:order' %}">
+            <button>주문 페이지로 이동</button>
+        </a>
+    </form>
 </body>
 </html>
